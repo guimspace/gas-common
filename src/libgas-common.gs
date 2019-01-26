@@ -1,3 +1,9 @@
+function htmlInclude(fileName) {
+  return HtmlService.createHtmlOutputFromFile(fileName)
+    .getContent();
+}
+
+
 /**
  * Converts an array of bytes to string.
  * @param  {Object} b Array of bytes.
