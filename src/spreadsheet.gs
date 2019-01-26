@@ -12,6 +12,7 @@ function copySheetsFromTemplate_() {
   }
 }
 
+
 function deleteAllSheets_() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet(),
       listSheets = spreadsheet.getSheets();

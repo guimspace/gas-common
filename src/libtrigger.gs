@@ -100,7 +100,7 @@ function deleteScriptAppTriggers_(method, key) {
 
   listTriggers = ScriptApp.getUserTriggers( SpreadsheetApp.getActiveSpreadsheet() );
 
-  for(i in listTriggers) {
+  for(i = 0;  i < listTriggers.length;  i++) {
     if(listTriggers[i].getUniqueId() === thisTriggerID) {
       ScriptApp.deleteTrigger(listTriggers[i]);
       m_Properties.setProperty(key, '');
@@ -117,7 +117,7 @@ function purgeScriptAppTriggers_() {
   var i;
 
 
-  for(i in listTriggers) {
+  for(i = 0;  i < listTriggers.length;  i++) {
     ScriptApp.deleteTrigger(listTriggers[i]);
     Utilities.sleep(487);
   }

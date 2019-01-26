@@ -13,7 +13,7 @@ function bin2String(b) {
   var r = '';
   var v, i;
 
-  for(i in b) {
+  for(i = 0;  i < b.length;  i++) {
     v = b[i];
     if(v < 0) v += 256;
     v = v.toString(16);
@@ -55,6 +55,7 @@ function testAuthorizationRequired_(s) {
 
   return true;
 }
+
 
 function randomString(n, p) {
   var a, b;
