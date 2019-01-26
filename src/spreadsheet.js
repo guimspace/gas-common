@@ -6,6 +6,8 @@ function copySheetsFromTemplate_() {
 
 
   for(i = 0;  i < listSheets.length;  i++) {
+    if(spreadsheet.getSheetByName(listSheets[i])) continue;
+
     spreadsheetTemplate.getSheetByName(listSheets[i])
       .copyTo(spreadsheet)
       .setName(listSheets[i]);
