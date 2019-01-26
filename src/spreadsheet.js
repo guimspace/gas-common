@@ -1,16 +1,16 @@
 function copySheetsFromTemplate_() {
-  var spreadsheetTemplate = SpreadsheetApp.openById('spreadsheet_id'),
+  var spreadsheetTemplate = SpreadsheetApp.openById("spreadsheet_id"),
       spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  var listSheets = [ 'foo', 'bar' ];
+  var listSheetsTemplate = [ "foo", "bar" ];
   var i;
 
 
-  for(i = 0;  i < listSheets.length;  i++) {
-    if(spreadsheet.getSheetByName(listSheets[i])) continue;
+  for(i = 0;  i < listSheetsTemplate.length;  i++) {
+    if(spreadsheet.getSheetByName(listSheetsTemplate[i])) continue;
 
-    spreadsheetTemplate.getSheetByName(listSheets[i])
+    spreadsheetTemplate.getSheetByName(listSheetsTemplate[i])
       .copyTo(spreadsheet)
-      .setName(listSheets[i]);
+      .setName(listSheetsTemplate[i]);
   }
 }
 
@@ -34,15 +34,13 @@ function deleteAllSheets_() {
 
 
 function isMissingSheet() {
-  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet(),
-      sheet;
-  var list = [ ];
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  var list = [ "foo", "bar" ];
   var i;
 
 
   for(i = 0;  i < list.length;  i++) {
-    sheet = spreadsheet.getSheetByName(list[i]);
-    if(!sheet) return true;
+    if(spreadsheet.getSheetByName(list[i]) == null) return true;
   }
 
   return false;

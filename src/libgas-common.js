@@ -35,21 +35,21 @@ function testAuthorizationRequired_(s) {
   var htmlTemplate, htmlMessage;
 
   if(authInfoLevel.getAuthorizationStatus() == ScriptApp.AuthorizationStatus.REQUIRED) {
-    if(documentProperties.getProperty('authorizationStatus') === ''  &&  MailApp.getRemainingDailyQuota() > 0  &&  !s) {
-      htmlTemplate = HtmlService.createTemplateFromFile('html');
+    if(documentProperties.getProperty("authorizationStatus") === ""  &&  MailApp.getRemainingDailyQuota() > 0  &&  !s) {
+      htmlTemplate = HtmlService.createTemplateFromFile("html");
       htmlTemplate.url = authInfoLevel.getAuthorizationUrl();
       htmlMessage = htmlTemplate.evaluate();
       MailApp.sendEmail(Session.getEffectiveUser().getEmail(),
-          '',
+          "",
           htmlMessage.getContent(), {
-            name: '',
+            name: "",
             htmlBody: htmlMessage.getContent(),
             noReply: true
           });
-      documentProperties.setProperty('authorizationStatus', 'true');
+      documentProperties.setProperty("authorizationStatus", "true");
     }
   } else {
-    documentProperties.setProperty('authorizationStatus', '');
+    documentProperties.setProperty("authorizationStatus", "");
     return false;
   }
 
