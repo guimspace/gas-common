@@ -1,9 +1,10 @@
 # Version History
 
-## Next release
+## 1.1.0 (2019-01-26)
 - Change filename extension *.gs to *.js.
 - Add function htmlInclude().
+- Skip sheets with name already taken.
 
 
-## v1.0.0 (2019-01-26)
+## 1.0.0 (2019-01-26)
 - Initial release.
