@@ -1,3 +1,9 @@
+/**
+ * Returns a tabular 2D array representation of a DSV string or file.
+ * @param  {String/File} source The file or DSV string.
+ * @param  {String} delimiter   The delimiter between values.
+ * @return {Array}              The tabular 2D representation.
+ */
 function parseDsvTo2DArray_(source, delimiter) {
   var data;
 
@@ -25,7 +31,12 @@ function parseDsvTo2DArray_(source, delimiter) {
   return data;
 }
 
-
+/**
+ * Returns a DSV string representation of a tabular 2D array.
+ * @param  {String/File} source The 2D array.
+ * @param  {String} delimiter   The delimiter between values.
+ * @return {Array}              The DSV string.
+ */
 function transform2DArrayToDsv_(data, delimiter) {
   var output, i, j;
 
