@@ -2,7 +2,7 @@ function bodyReplaceAllText_(body, list, sign) {
   var key, c1, c2;
 
   switch(sign) {
-    case "braces":
+    case "curly":
       c1 = "{";
       c2 = "}";
       break;
