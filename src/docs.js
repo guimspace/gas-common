@@ -27,6 +27,8 @@ function bodyReplaceAllText_(body, list, sign) {
 
 
   for(key in list) {
+    if( !/\w+/.test(key) ) continue;
+
     body.replaceText(c1 + key + c2, list[key]);
   }
 }
