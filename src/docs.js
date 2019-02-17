@@ -6,6 +6,14 @@ function bodyReplaceAllText_(body, list, sign) {
       c1 = "{";
       c2 = "}";
       break;
+    case "round":
+      c1 = "(";
+      c2 = ")";
+      break;
+    case "square":
+      c1 = "[";
+      c2 = "]";
+      break;
     case "at":
       c1 = "@";
       c2 = c1;
