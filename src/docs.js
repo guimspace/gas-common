@@ -1,18 +1,24 @@
 function bodyReplaceAllText_(body, list, sign) {
-  var key, c;
+  var key, c1, c2;
 
   switch(sign) {
+    case "braces":
+      c1 = "{";
+      c2 = "}";
+      break;
     case "at":
-      c = "@";
+      c1 = "@";
+      c2 = c1;
       break;
     case "percent":
     default:
-      c = "%";
+      c1 = "%";
+      c2 = c1;
       break;
   }
 
 
   for(key in list) {
-    body.replaceText(c + key + c, list[key]);
+    body.replaceText(c1 + key + c2, list[key]);
   }
 }
