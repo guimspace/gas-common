@@ -18,6 +18,10 @@ function bodyReplaceAllText_(body, list, sign) {
       c1 = "@";
       c2 = c1;
       break;
+    case "hashtag":
+      c1 = "#";
+      c2 = c1;
+      break;
     case "percent":
     default:
       c1 = "%";
@@ -53,6 +57,10 @@ function bodyReplaceFirstText_(body, list, sign) {
       break;
     case "at":
       c1 = "@";
+      c2 = c1;
+      break;
+    case "hashtag":
+      c1 = "#";
       c2 = c1;
       break;
     case "percent":
