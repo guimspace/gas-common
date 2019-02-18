@@ -1,5 +1,9 @@
 # Version History
 
+## 1.3.0 (2019-02-18)
+- New function bodyReplaceAllText_().
+- New function bodyReplaceFirstText_().
+
 ## 1.2.0 (2019-02-14)
 - Fix coding style.
 - New function parseDsvTo2DArray_().
