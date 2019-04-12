@@ -52,6 +52,12 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
       .atHour(param2)
       .inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
       .create();
+  } else if(type === 'everyHours') {
+    thisTrigger = ScriptApp.newTrigger(name)
+      .timeBased()
+      .everyHours(param1)
+      .inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+      .create();
   } else if(type === 'everyDays') {
     if(param2 == null)  param2 = 0;
 
