@@ -95,6 +95,11 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
       .forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
       .onChange()
       .create();
+  } else if(type === 'onFormSubmit') {
+    thisTrigger = ScriptApp.newTrigger(name)
+      .forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
+      .onFormSubmit()
+      .create();
   }
 
   m_Properties.setProperty(key, thisTrigger.getUniqueId());
