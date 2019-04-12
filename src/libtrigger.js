@@ -90,6 +90,11 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
       .forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
       .onEdit()
       .create();
+  } else if(type === 'onChange') {
+    thisTrigger = ScriptApp.newTrigger(name)
+      .forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
+      .onChange()
+      .create();
   }
 
   m_Properties.setProperty(key, thisTrigger.getUniqueId());
