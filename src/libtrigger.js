@@ -73,6 +73,12 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
       .atHour(param2)
       .inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
       .create();
+  } else if(type === 'everyWeeks') {
+    thisTrigger = ScriptApp.newTrigger(name)
+      .timeBased()
+      .everyWeeks(param1)
+      .inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+      .create();
   } else if(type === 'onEdit') {
     thisTrigger = ScriptApp.newTrigger(name)
       .forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
