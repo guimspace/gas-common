@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2019 Guilherme T Maeoka
+ * This code is licensed under MIT license.
+ * <https://github.com/guimspace/gas-common>
+ */
+
 function copySheetsFromTemplate_() {
   var spreadsheetTemplate = SpreadsheetApp.openById("spreadsheet_id"),
       spreadsheet = SpreadsheetApp.getActiveSpreadsheet();

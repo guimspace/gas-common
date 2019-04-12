@@ -1,4 +1,10 @@
 /**
+ * Copyright (c) 2019 Guilherme T Maeoka
+ * This code is licensed under MIT license.
+ * <https://github.com/guimspace/gas-common>
+ */
+
+/**
  * Returns a tabular 2D array representation of a DSV string or file.
  * @param  {String/File} source The file or DSV string.
  * @param  {String} delimiter   The delimiter between values.

@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2019 Guilherme T Maeoka
+ * This code is licensed under MIT license.
+ * <https://github.com/guimspace/gas-common>
+ */
+
 function htmlInclude(fileName) {
   return HtmlService.createHtmlOutputFromFile(fileName)
     .getContent();

@@ -1,4 +1,10 @@
 /**
+ * Copyright (c) 2019 Guilherme T Maeoka
+ * This code is licensed under MIT license.
+ * <https://github.com/guimspace/gas-common>
+ */
+
+/**
  * Gets the cached value for the given key, or null if none is found.
  * @param  {String} method The method to get a cache instance
  * @param  {String} key    The key to look up in the cache

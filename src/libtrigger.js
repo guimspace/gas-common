@@ -1,4 +1,10 @@
 /**
+ * Copyright (c) 2019 Guilherme T Maeoka
+ * This code is licensed under MIT license.
+ * <https://github.com/guimspace/gas-common>
+ */
+
+/**
  * Creates a trigger and store the id in a key of property store.
  * @param  {String} method The method to get a property store
  * @param  {String} key    The key for the property
