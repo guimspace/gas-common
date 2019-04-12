@@ -1,5 +1,8 @@
 # Version History
 
+## 1.4.0 (2019-04-11)
+- New options for triggers: `everyMinutes`, `everyHours`, `everyWeeks`, `afterMilliseconds`, `onChange`, `onFormSubmit`.
+
 ## 1.3.0 (2019-02-18)
 - New function bodyReplaceAllText_().
 - New function bodyReplaceFirstText_().
