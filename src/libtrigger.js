@@ -28,6 +28,12 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
       .forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
       .onOpen()
       .create();
+  } else if(type === 'afterMilliseconds') {
+    thisTrigger = ScriptApp.newTrigger(name)
+      .timeBased()
+      .after(param1)
+      .inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+      .create();
   } else if(type === 'atDate') {
     thisTrigger = ScriptApp.newTrigger(name)
       .timeBased()
