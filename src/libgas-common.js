@@ -40,23 +40,23 @@ function testAuthorizationRequired_(s) {
   var authInfoLevel = ScriptApp.getAuthorizationInfo(ScriptApp.AuthMode.FULL);
   var htmlTemplate, htmlMessage;
 
-  if(authInfoLevel.getAuthorizationStatus() == ScriptApp.AuthorizationStatus.REQUIRED) {
-    if(documentProperties.getProperty("authorizationStatus") === ""  &&  MailApp.getRemainingDailyQuota() > 0  &&  !s) {
-      htmlTemplate = HtmlService.createTemplateFromFile("html");
-      htmlTemplate.url = authInfoLevel.getAuthorizationUrl();
-      htmlMessage = htmlTemplate.evaluate();
-      MailApp.sendEmail(Session.getEffectiveUser().getEmail(),
-          "",
-          htmlMessage.getContent(), {
-            name: "",
-            htmlBody: htmlMessage.getContent(),
-            noReply: true
-          });
-      documentProperties.setProperty("authorizationStatus", "true");
-    }
-  } else {
+  if(authInfoLevel.getAuthorizationStatus() == ScriptApp.AuthorizationStatus.NOT_REQUIRED) {
     documentProperties.setProperty("authorizationStatus", "");
     return false;
+  }
+
+  if(documentProperties.getProperty("authorizationStatus") === ""  &&  MailApp.getRemainingDailyQuota() > 0  &&  !s) {
+    htmlTemplate = HtmlService.createTemplateFromFile("html");
+    htmlTemplate.url = authInfoLevel.getAuthorizationUrl();
+    htmlMessage = htmlTemplate.evaluate();
+    MailApp.sendEmail(Session.getEffectiveUser().getEmail(),
+        "",
+        htmlMessage.getContent(), {
+          name: "",
+          htmlBody: htmlMessage.getContent(),
+          noReply: true
+        });
+    documentProperties.setProperty("authorizationStatus", "true");
   }
 
   return true;
