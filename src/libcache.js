@@ -24,7 +24,7 @@ function getCacheService_(method, key, type) {
       break;
     case 'user':
     default:
-      m_Cache = userCache;
+      m_Cache = userCache_;
       break;
   }
 
