@@ -17,14 +17,14 @@ function getCacheService_(method, key, type) {
 
   switch(method) {
     case 'document':
-      m_Cache = CacheService.getDocumentCache();
+      m_Cache = documentCache_;
       break;
     case 'script':
-      m_Cache = CacheService.getScriptCache();
+      m_Cache = scriptCache_;
       break;
     case 'user':
     default:
-      m_Cache = CacheService.getUserCache();
+      m_Cache = userCache;
       break;
   }
 
@@ -59,14 +59,14 @@ function putCacheService_(method, key, type, value, expiration) {
   if(expiration == null) expiration = 600;
   switch(method) {
     case 'document':
-      m_Cache = CacheService.getDocumentCache();
+      m_Cache = documentCache_;
       break;
     case 'script':
-      m_Cache = CacheService.getScriptCache();
+      m_Cache = scriptCache_;
       break;
     case 'user':
     default:
-      m_Cache = CacheService.getUserCache();
+      m_Cache = userCache_;
       break;
   }
 
