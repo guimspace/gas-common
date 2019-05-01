@@ -17,14 +17,14 @@ function getPropertiesService_(method, key, type) {
 
   switch(method) {
     case 'document':
-      m_Properties = documentProperties_;
+      m_Properties = documentPropertiesService_;
       break;
     case 'script':
-      m_Properties = scriptProperties_;
+      m_Properties = scriptPropertiesService_;
       break;
     case 'user':
     default:
-      m_Properties = userProperties_;
+      m_Properties = userPropertiesService_;
       break;
   }
 
@@ -58,14 +58,14 @@ function setPropertiesService_(method, key, type, value) {
 
   switch(method) {
     case 'document':
-      m_Properties = documentProperties_;
+      m_Properties = documentPropertiesService_;
       break;
     case 'script':
-      m_Properties = scriptProperties_;
+      m_Properties = scriptPropertiesService_;
       break;
     case 'user':
     default:
-      m_Properties = userProperties_;
+      m_Properties = userPropertiesService_;
       break;
   }
 
@@ -94,18 +94,18 @@ function setPropertiesService_(method, key, type, value) {
 function purgePropertiesService_(method) {
   switch(method) {
     case 'document':
-      documentProperties_.deleteAllProperties();
+      documentPropertiesService_.deleteAllProperties();
       break;
     case 'script':
-      scriptProperties_.deleteAllProperties();
+      scriptPropertiesService_.deleteAllProperties();
       break;
     case 'user':
-      userProperties_.deleteAllProperties();
+      userPropertiesService_.deleteAllProperties();
       break;
     default:
-      documentProperties_.deleteAllProperties();
-      scriptProperties_.deleteAllProperties();
-      userProperties_.deleteAllProperties();
+      documentPropertiesService_.deleteAllProperties();
+      scriptPropertiesService_.deleteAllProperties();
+      userPropertiesService_.deleteAllProperties();
       break;
   }
 }

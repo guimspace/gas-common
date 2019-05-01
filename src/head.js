@@ -1,10 +1,10 @@
-var documentProperties_ = PropertiesService.getDocumentProperties(),
-    scriptProperties_ = PropertiesService.getScriptProperties(),
-    userProperties_ = PropertiesService.getUserProperties();
+var documentPropertiesService_ = PropertiesService.getDocumentProperties(),
+    scriptPropertiesService_ = PropertiesService.getScriptProperties(),
+    userPropertiesService_ = PropertiesService.getUserProperties();
 
-var documentCache_ = CacheService.getDocumentCache(),
-    scriptCache_ = CacheService.getScriptCache(),
-    userCache_ = CacheService.getUserCache();
+var documentCacheService_ = CacheService.getDocumentCache(),
+    scriptCacheService_ = CacheService.getScriptCache(),
+    userCacheService_ = CacheService.getUserCache();
 
 var AppsScriptGlobal = (function() {
   var o = {

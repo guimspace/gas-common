@@ -18,14 +18,14 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 
   switch(method) {
     case 'document':
-      m_Properties = documentProperties_;
+      m_Properties = documentPropertiesService_;
       break;
     case 'script':
-      m_Properties = scriptProperties_;
+      m_Properties = scriptPropertiesService_;
       break;
     case 'user':
     default:
-      m_Properties = userProperties_;
+      m_Properties = userPropertiesService_;
       break;
   }
 
@@ -124,14 +124,14 @@ function deleteScriptAppTriggers_(method, key) {
 
   switch(method) {
     case 'document':
-      m_Properties = documentProperties_;
+      m_Properties = documentPropertiesService_;
       break;
     case 'script':
-      m_Properties = scriptProperties_;
+      m_Properties = scriptPropertiesService_;
       break;
     case 'user':
     default:
-      m_Properties = userProperties_;
+      m_Properties = userPropertiesService_;
       break;
   }
 
