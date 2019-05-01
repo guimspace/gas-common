@@ -56,7 +56,7 @@ function testAuthorizationRequired_(s) {
           htmlBody: htmlMessage.getContent(),
           noReply: true
         });
-    documentProperties.setProperty("authorization_status", "true");
+    documentProperties.setProperty("authorization_status", "[ ]");
   }
 
   return true;
