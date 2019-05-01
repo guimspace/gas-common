@@ -17,14 +17,14 @@ function getPropertiesService_(method, key, type) {
 
   switch(method) {
     case 'document':
-      m_Properties = PropertiesService.getDocumentProperties();
+      m_Properties = documentProperties_;
       break;
     case 'script':
-      m_Properties = PropertiesService.getScriptProperties();
+      m_Properties = scriptProperties_;
       break;
     case 'user':
     default:
-      m_Properties = PropertiesService.getUserProperties();
+      m_Properties = userProperties_;
       break;
   }
 
@@ -58,14 +58,14 @@ function setPropertiesService_(method, key, type, value) {
 
   switch(method) {
     case 'document':
-      m_Properties = PropertiesService.getDocumentProperties();
+      m_Properties = documentProperties_;
       break;
     case 'script':
-      m_Properties = PropertiesService.getScriptProperties();
+      m_Properties = scriptProperties_;
       break;
     case 'user':
     default:
-      m_Properties = PropertiesService.getUserProperties();
+      m_Properties = userProperties_;
       break;
   }
 
@@ -94,18 +94,18 @@ function setPropertiesService_(method, key, type, value) {
 function purgePropertiesService_(method) {
   switch(method) {
     case 'document':
-      PropertiesService.getDocumentProperties().deleteAllProperties();
+      documentProperties_.deleteAllProperties();
       break;
     case 'script':
-      PropertiesService.getScriptProperties().deleteAllProperties();
+      scriptProperties_.deleteAllProperties();
       break;
     case 'user':
-      PropertiesService.getUserProperties().deleteAllProperties();
+      userProperties_.deleteAllProperties();
       break;
     default:
-      PropertiesService.getDocumentProperties().deleteAllProperties();
-      PropertiesService.getScriptProperties().deleteAllProperties();
-      PropertiesService.getUserProperties().deleteAllProperties();
+      documentProperties_.deleteAllProperties();
+      scriptProperties_.deleteAllProperties();
+      userProperties_.deleteAllProperties();
       break;
   }
 }
