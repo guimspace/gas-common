@@ -32,10 +32,9 @@ function bin2String(b) {
 
 
 /**
-  * @param  {Boolean} s Falsy to send email requesting re-authorization.
   * @return {Boolean} True if authorization is required.
   */
-function testAuthorizationRequired_(s) {
+function testAuthorizationRequired_() {
   var documentProperties = PropertiesService.getDocumentProperties();
   var authInfoLevel = ScriptApp.getAuthorizationInfo(ScriptApp.AuthMode.FULL);
   var htmlTemplate, htmlMessage;
@@ -45,7 +44,7 @@ function testAuthorizationRequired_(s) {
     return false;
   }
 
-  if(documentProperties.getProperty("authorization_status") === ""  &&  MailApp.getRemainingDailyQuota() > 0  &&  !s) {
+  if(documentProperties.getProperty("authorization_status") === ""  &&  MailApp.getRemainingDailyQuota() > 0) {
     htmlTemplate = HtmlService.createTemplateFromFile("html");
     htmlTemplate.url = authInfoLevel.getAuthorizationUrl();
     htmlMessage = htmlTemplate.evaluate();
