@@ -1,10 +1,9 @@
 # GAS Common
 
 [![License](https://img.shields.io/badge/license-MIT%20License-red.svg)](https://github.com/guimspace/gas-common/blob/master/LICENSE.md)
+[![Version](https://img.shields.io/github/release/guimspace/gas-common.svg)](https://github.com/guimspace/gas-common/releases)
 
 A bundle of **G**oogle **A**pps **S**cripts to save lines of code.
-
-### [Version History](https://github.com/guimspace/gas-common/blob/master/VERSION_HISTORY.md)
 
 
 ## How to use
