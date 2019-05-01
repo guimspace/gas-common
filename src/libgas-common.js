@@ -32,8 +32,13 @@ function bin2String(b) {
 
 
 /**
-  * @return {Boolean} True if authorization is required.
-  */
+ * Sends an email requesting re-authorization of the script.
+ * The property "authorization_status" ensures the recipient receives the email
+ * only once (for every new re-authorization needed), otherwise the function
+ * would send an email in every call.
+ *
+ * @return {Boolean} True if re-authorization is required.
+ */
 function testAuthorizationRequired_() {
   var documentProperties = PropertiesService.getDocumentProperties();
   var authInfoLevel = ScriptApp.getAuthorizationInfo(ScriptApp.AuthMode.FULL);
