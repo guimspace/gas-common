@@ -41,11 +41,11 @@ function testAuthorizationRequired_(s) {
   var htmlTemplate, htmlMessage;
 
   if(authInfoLevel.getAuthorizationStatus() == ScriptApp.AuthorizationStatus.NOT_REQUIRED) {
-    documentProperties.setProperty("authorizationStatus", "");
+    documentProperties.setProperty("authorization_status", "");
     return false;
   }
 
-  if(documentProperties.getProperty("authorizationStatus") === ""  &&  MailApp.getRemainingDailyQuota() > 0  &&  !s) {
+  if(documentProperties.getProperty("authorization_status") === ""  &&  MailApp.getRemainingDailyQuota() > 0  &&  !s) {
     htmlTemplate = HtmlService.createTemplateFromFile("html");
     htmlTemplate.url = authInfoLevel.getAuthorizationUrl();
     htmlMessage = htmlTemplate.evaluate();
@@ -56,7 +56,7 @@ function testAuthorizationRequired_(s) {
           htmlBody: htmlMessage.getContent(),
           noReply: true
         });
-    documentProperties.setProperty("authorizationStatus", "true");
+    documentProperties.setProperty("authorization_status", "true");
   }
 
   return true;
