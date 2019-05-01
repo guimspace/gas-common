@@ -49,17 +49,20 @@ function isReAuthorizationRequired_() {
     return false;
   }
 
-  if(documentProperties.getProperty("authorization_status") === ""  &&  MailApp.getRemainingDailyQuota() > 0) {
+  if(documentProperties.getProperty("authorization_status") === "" && MailApp.getRemainingDailyQuota() > 0) {
     htmlTemplate = HtmlService.createTemplateFromFile("html");
+
     htmlTemplate.url = authInfoLevel.getAuthorizationUrl();
+
     htmlMessage = htmlTemplate.evaluate();
-    MailApp.sendEmail(Session.getEffectiveUser().getEmail(),
-        "",
-        htmlMessage.getContent(), {
-          name: "",
-          htmlBody: htmlMessage.getContent(),
-          noReply: true
-        });
+    MailApp.sendEmail(
+      Session.getEffectiveUser().getEmail(),
+      "",
+      htmlMessage.getContent(), {
+        name: "",
+        htmlBody: htmlMessage.getContent(),
+        noReply: true
+      });
     documentProperties.setProperty("authorization_status", "[ ]");
   }
 
