@@ -45,7 +45,7 @@ function isReAuthorizationRequired_() {
   var htmlTemplate, htmlMessage;
 
   if(authInfoLevel.getAuthorizationStatus() == ScriptApp.AuthorizationStatus.NOT_REQUIRED) {
-    documentProperties.setProperty("authorization_status", "");
+    documentProperties.deleteProperty("authorization_status");
     return false;
   }
 
