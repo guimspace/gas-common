@@ -49,7 +49,7 @@ function isReAuthorizationRequired_() {
     return false;
   }
 
-  if(documentProperties.getProperty("auth_request_sent") === "" && MailApp.getRemainingDailyQuota() > 0) {
+  if(!documentProperties.getProperty("auth_request_sent") && MailApp.getRemainingDailyQuota() > 0) {
     htmlTemplate = HtmlService.createTemplateFromFile("html");
 
     htmlTemplate.url = authInfoLevel.getAuthorizationUrl();
