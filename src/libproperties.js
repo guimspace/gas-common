@@ -88,6 +88,30 @@ function setPropertiesService_(method, key, type, value) {
 }
 
 /**
+ * Deletes the given key-value pair in the current Properties store.
+ * @param  {String} method The method to get a property store
+ * @param  {String} key    The key for the property
+ */
+function deletePropertiesService_(method, key) {
+  var m_Properties;
+
+  switch(method) {
+    case 'document':
+      m_Properties = documentPropertiesService_;
+      break;
+    case 'script':
+      m_Properties = scriptPropertiesService_;
+      break;
+    case 'user':
+    default:
+      m_Properties = userPropertiesService_;
+      break;
+  }
+
+  m_Properties.deleteProperty(key);
+}
+
+/**
  * Purges all key-value pairs in specific or all Properties store.
  * @param  {String} method The method to get a property store
  */
