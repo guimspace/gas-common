@@ -94,18 +94,18 @@ function setPropertiesService_(method, key, type, value) {
 function purgePropertiesService_(method) {
   switch(method) {
     case 'document':
-      documentPropertiesService_.deleteAllProperties();
+      PropertiesService.getDocumentProperties().deleteAllProperties();
       break;
     case 'script':
-      scriptPropertiesService_.deleteAllProperties();
+      PropertiesService.getScriptProperties().deleteAllProperties();
       break;
     case 'user':
-      userPropertiesService_.deleteAllProperties();
+      PropertiesService.getUserProperties().deleteAllProperties();
       break;
     default:
-      documentPropertiesService_.deleteAllProperties();
-      scriptPropertiesService_.deleteAllProperties();
-      userPropertiesService_.deleteAllProperties();
+      PropertiesService.getDocumentProperties().deleteAllProperties();
+      PropertiesService.getScriptProperties().deleteAllProperties();
+      PropertiesService.getUserProperties().deleteAllProperties();
       break;
   }
 }
