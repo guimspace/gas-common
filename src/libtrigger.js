@@ -16,17 +16,19 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
   var m_Properties;
   var thisTrigger;
 
-  switch(method) {
-    case 'document':
-      m_Properties = PropertiesService.getDocumentProperties();
-      break;
-    case 'script':
-      m_Properties = PropertiesService.getScriptProperties();
-      break;
-    case 'user':
-    default:
-      m_Properties = PropertiesService.getUserProperties();
-      break;
+  if(key !== "") {
+    switch(method) {
+      case 'document':
+        m_Properties = PropertiesService.getDocumentProperties();
+        break;
+      case 'script':
+        m_Properties = PropertiesService.getScriptProperties();
+        break;
+      case 'user':
+      default:
+        m_Properties = PropertiesService.getUserProperties();
+        break;
+    }
   }
 
   if(type === 'onOpen') {
@@ -108,7 +110,9 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
       .create();
   }
 
-  m_Properties.setProperty(key, thisTrigger.getUniqueId());
+  if(key !== "") {
+    m_Properties.setProperty(key, thisTrigger.getUniqueId());
+  }
 }
 
 /**
