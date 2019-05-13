@@ -1,11 +1,3 @@
-var documentPropertiesService_ = PropertiesService.getDocumentProperties(),
-    scriptPropertiesService_ = PropertiesService.getScriptProperties(),
-    userPropertiesService_ = PropertiesService.getUserProperties();
-
-var documentCacheService_ = CacheService.getDocumentCache(),
-    scriptCacheService_ = CacheService.getScriptCache(),
-    userCacheService_ = CacheService.getUserCache();
-
 var AppsScriptGlobal = (function() {
   var o = {
     AddonVersionCode: 0,

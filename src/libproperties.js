@@ -17,14 +17,14 @@ function getPropertiesService_(method, key, type) {
 
   switch(method) {
     case 'document':
-      m_Properties = documentPropertiesService_;
+      m_Properties = PropertiesService.getDocumentProperties();
       break;
     case 'script':
-      m_Properties = scriptPropertiesService_;
+      m_Properties = PropertiesService.getScriptProperties();
       break;
     case 'user':
     default:
-      m_Properties = userPropertiesService_;
+      m_Properties = PropertiesService.getUserProperties();
       break;
   }
 
@@ -58,14 +58,14 @@ function setPropertiesService_(method, key, type, value) {
 
   switch(method) {
     case 'document':
-      m_Properties = documentPropertiesService_;
+      m_Properties = PropertiesService.getDocumentProperties();
       break;
     case 'script':
-      m_Properties = scriptPropertiesService_;
+      m_Properties = PropertiesService.getScriptProperties();
       break;
     case 'user':
     default:
-      m_Properties = userPropertiesService_;
+      m_Properties = PropertiesService.getUserProperties();
       break;
   }
 
@@ -97,14 +97,14 @@ function deletePropertiesService_(method, key) {
 
   switch(method) {
     case 'document':
-      m_Properties = documentPropertiesService_;
+      m_Properties = PropertiesService.getDocumentProperties();
       break;
     case 'script':
-      m_Properties = scriptPropertiesService_;
+      m_Properties = PropertiesService.getScriptProperties();
       break;
     case 'user':
     default:
-      m_Properties = userPropertiesService_;
+      m_Properties = PropertiesService.getUserProperties();
       break;
   }
 
