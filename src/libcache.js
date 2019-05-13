@@ -41,7 +41,7 @@ function getCacheService_(method, key, type) {
       if(typeof p === 'string') return JSON.parse( p );
       else return;
     default:
-      return;
+      return m_Cache.get(key);
   }
 }
 
@@ -84,6 +84,7 @@ function putCacheService_(method, key, type, value, expiration) {
     case 'json':
       m_Cache.put(key, JSON.stringify( value ), expiration);
     default:
+      m_Cache.put(key, value, expiration);
       break;
   }
 }

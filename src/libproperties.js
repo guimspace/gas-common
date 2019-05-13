@@ -41,7 +41,7 @@ function getPropertiesService_(method, key, type) {
       if(typeof p === 'string') return JSON.parse( p );
       else return;
     default:
-      return;
+      return m_Properties.getProperty(key);
   }
 }
 
@@ -83,6 +83,7 @@ function setPropertiesService_(method, key, type, value) {
     case 'json':
       m_Properties.setProperty(key, JSON.stringify( value ));
     default:
+      m_Properties.setProperty(key, value);
       break;
   }
 }
