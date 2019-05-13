@@ -119,8 +119,9 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
  * Deletes a trigger of id stored in a given key of property store.
  * @param  {String} method The method to get a property store
  * @param  {String} key    The key for the property
+ * @param  {String} name   The name of the function
  */
-function deleteScriptAppTriggers_(method, key) {
+function deleteScriptAppTriggers_(method, key, name) {
   var m_Properties;
   var listTriggers, thisTrigger, thisTriggerID;
   var i;
@@ -139,16 +140,25 @@ function deleteScriptAppTriggers_(method, key) {
       break;
   }
 
-  thisTriggerID = m_Properties.getProperty(key);
-  if(!thisTriggerID) return;
-
   listTriggers = ScriptApp.getUserTriggers( SpreadsheetApp.getActiveSpreadsheet() );
 
-  for(i = 0;  i < listTriggers.length;  i++) {
-    if(listTriggers[i].getUniqueId() === thisTriggerID) {
-      ScriptApp.deleteTrigger(listTriggers[i]);
-      m_Properties.deleteProperty(key);
-      break;
+  if(key) {
+    thisTriggerID = m_Properties.getProperty(key);
+    if(!thisTriggerID) return;
+
+    for(i = 0;  i < listTriggers.length;  i++) {
+      if(listTriggers[i].getUniqueId() === thisTriggerID) {
+        ScriptApp.deleteTrigger(listTriggers[i]);
+        m_Properties.deleteProperty(key);
+        break;
+      }
+    }
+  } else {
+    for(i = 0;  i < listTriggers.length;  i++) {
+      if(listTriggers[i].getHandlerFunction() === name) {
+        ScriptApp.deleteTrigger(listTriggers[i]);
+        break;
+      }
     }
   }
 }
