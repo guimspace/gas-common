@@ -36,12 +36,12 @@ function getPropertiesService_(method, key, type) {
     case 'boolean':
       if(m_Properties.getProperty(key) === 'true') return true;
       else return false;
+    case 'obj':
     case 'json':
       var p = m_Properties.getProperty(key);
-      if(typeof p === 'string') return JSON.parse( p );
-      else return;
+      return JSON.parse( p );
     default:
-      return;
+      return m_Properties.getProperty(key);
   }
 }
 
@@ -80,11 +80,37 @@ function setPropertiesService_(method, key, type, value) {
       if(value) m_Properties.setProperty(key, 'true');
       else m_Properties.setProperty(key, 'false');
       break;
+    case 'obj':
     case 'json':
       m_Properties.setProperty(key, JSON.stringify( value ));
     default:
+      m_Properties.setProperty(key, value);
       break;
   }
+}
+
+/**
+ * Deletes the given key-value pair in the current Properties store.
+ * @param  {String} method The method to get a property store
+ * @param  {String} key    The key for the property
+ */
+function deletePropertiesService_(method, key) {
+  var m_Properties;
+
+  switch(method) {
+    case 'document':
+      m_Properties = PropertiesService.getDocumentProperties();
+      break;
+    case 'script':
+      m_Properties = PropertiesService.getScriptProperties();
+      break;
+    case 'user':
+    default:
+      m_Properties = PropertiesService.getUserProperties();
+      break;
+  }
+
+  m_Properties.deleteProperty(key);
 }
 
 /**

@@ -36,12 +36,12 @@ function getCacheService_(method, key, type) {
     case 'boolean':
       if(m_Cache.get(key) === 'true') return true;
       else return false;
+    case 'obj':
     case 'json':
       var p = m_Cache.get(key);
-      if(typeof p === 'string') return JSON.parse( p );
-      else return;
+      return JSON.parse( p );
     default:
-      return;
+      return m_Cache.get(key);
   }
 }
 
@@ -81,9 +81,11 @@ function putCacheService_(method, key, type, value, expiration) {
       if(value) m_Cache.put(key, 'true', expiration);
       else m_Cache.put(key, 'false', expiration);
       break;
+    case 'obj':
     case 'json':
       m_Cache.put(key, JSON.stringify( value ), expiration);
     default:
+      m_Cache.put(key, value, expiration);
       break;
   }
 }
