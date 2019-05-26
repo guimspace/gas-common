@@ -84,6 +84,7 @@ function putCacheService_(method, key, type, value, expiration) {
     case 'obj':
     case 'json':
       m_Cache.put(key, JSON.stringify( value ), expiration);
+      break;
     default:
       m_Cache.put(key, value, expiration);
       break;

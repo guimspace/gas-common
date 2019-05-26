@@ -83,6 +83,7 @@ function setPropertiesService_(method, key, type, value) {
     case 'obj':
     case 'json':
       m_Properties.setProperty(key, JSON.stringify( value ));
+      break;
     default:
       m_Properties.setProperty(key, value);
       break;
