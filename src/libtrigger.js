@@ -142,7 +142,7 @@ function deleteScriptAppTriggers_(method, key, name) {
 
   listTriggers = ScriptApp.getUserTriggers( SpreadsheetApp.getActiveSpreadsheet() );
 
-  if(key) {
+  if(key && key != "") {
     thisTriggerID = m_Properties.getProperty(key);
     if(!thisTriggerID) return;
 
