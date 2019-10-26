@@ -90,7 +90,7 @@ function computeDigest(algorithm, value, charset, byte) {
 	digest = Utilities.computeDigest(algorithm, value, charset);
 
 	if (!byte) {
-		digest = bin2String(digest);
+		digest = byte2string(digest);
 	}
 
 	return digest;
@@ -106,7 +106,7 @@ function computeHmacSignature(algorithm, value, key, charset, byte) {
 	digest = Utilities.computeHmacSignature(algorithm, value, key, charset);
 
 	if (!byte) {
-		digest = bin2String(digest);
+		digest = byte2string(digest);
 	}
 
 	return digest;
