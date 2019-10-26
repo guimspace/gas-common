@@ -38,7 +38,7 @@ function getMacAlgorithm(v) {
 }
 
 
-function getChartset(v) {
+function getCharset(v) {
 	switch (v) {
 		case "US_ASCII":
 			return Utilities.Charset.US_ASCII;
@@ -62,7 +62,7 @@ function getChartset(v) {
 function base64Decode(base64data, charset, byte) {
 	var decoded;
 
-	charset = getChartset(charset);
+	charset = getCharset(charset);
 
 	decoded = Utilities.base64Decode(base64data, charset);
 
@@ -85,7 +85,7 @@ function base64Decode(base64data, charset, byte) {
 function base64DecodeWebSafe(base64data, charset, byte) {
 	var decoded;
 
-	charset = getChartset(charset);
+	charset = getCharset(charset);
 
 	decoded = Utilities.base64DecodeWebSafe(base64data, charset);
 
@@ -110,7 +110,7 @@ function computeDigest(algorithm, value, charset, byte) {
 	var digest;
 
 	algorithm = getDigestAlgorithm(algorithm);
-	charset = getChartset(charset);
+	charset = getCharset(charset);
 
 	digest = Utilities.computeDigest(algorithm, value, charset);
 
@@ -136,7 +136,7 @@ function computeHmacSignature(algorithm, value, key, charset, byte) {
 	var digest;
 
 	algorithm = getMacAlgorithm(algorithm);
-	charset = getChartset(charset);
+	charset = getCharset(charset);
 
 	digest = Utilities.computeHmacSignature(algorithm, value, key, charset);
 
