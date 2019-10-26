@@ -21,6 +21,23 @@ function getDigestAlgorithm(v) {
 }
 
 
+function getMacAlgorithm(v) {
+	switch (v) {
+		case "MD5":
+			return Utilities.MacAlgorithm.HMAC_MD5;
+		case "SHA_1":
+			return Utilities.MacAlgorithm.HMAC_SHA_1;
+		case "SHA_256":
+			return Utilities.MacAlgorithm.HMAC_SHA_256;
+		case "SHA_512":
+			return Utilities.MacAlgorithm.HMAC_SHA_512;
+
+		default:
+			return;
+	}
+}
+
+
 function getChartset(v) {
 	switch (v) {
 		case "US_ASCII":
@@ -83,7 +100,7 @@ function computeDigest(algorithm, value, charset, byte) {
 function computeHmacSignature(algorithm, value, key, charset, byte) {
 	var digest;
 
-	algorithm = getDigestAlgorithm(algorithm);
+	algorithm = getMacAlgorithm(algorithm);
 	charset = getChartset(charset);
 
 	digest = Utilities.computeHmacSignature(algorithm, value, key, charset);
