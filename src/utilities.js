@@ -50,7 +50,15 @@ function getChartset(v) {
 	}
 }
 
-
+/**
+ * Decodes a base-64 encoded string into a byte array in a specific character set.
+ *
+ * @param  {string} base64data The string of data to decode.
+ * @param  {string} charset    A Charset representing the input character set.
+ * @param  {bool} byte       	 A bool to return output true:byte[] or false:string.
+ *
+ * @return {byte[]/string}     A byte[]/string representing the output signature.
+ */
 function base64Decode(base64data, charset, byte) {
 	var decoded;
 
@@ -65,7 +73,15 @@ function base64Decode(base64data, charset, byte) {
 	return decoded;
 }
 
-
+/**
+ * Decodes a base-64 web-safe encoded string into a byte array in a specific character set.
+ *
+ * @param  {string} base64data The string of web-safe data to decode.
+ * @param  {string} charset    A Charset representing the input character set.
+ * @param  {bool} byte       	 A bool to return output true:byte[] or false:string.
+ *
+ * @return {byte[]/string}     A byte[]/string representing the output signature.
+ */
 function base64DecodeWebSafe(base64data, charset, byte) {
 	var decoded;
 
@@ -80,7 +96,16 @@ function base64DecodeWebSafe(base64data, charset, byte) {
 	return decoded;
 }
 
-
+/**
+ * Compute a digest using the specified algorithm on the specified String value with the given character set.
+ *
+ * @param  {string} algorithm A DigestAlgorithm algorithm to use to hash the input value.
+ * @param  {string} value     The input value to generate a hash for.
+ * @param  {string} charset   A Charset representing the input character set.
+ * @param  {bool} byte      	A bool to return output true:byte[] or false:string.
+ *
+ * @return {byte[]/string}    A byte[]/string representing the output signature.
+ */
 function computeDigest(algorithm, value, charset, byte) {
 	var digest;
 
@@ -96,7 +121,17 @@ function computeDigest(algorithm, value, charset, byte) {
 	return digest;
 }
 
-
+/**
+ * Compute a message authentication code using the specified algorithm on the specified key and value.
+ *
+ * @param  {string} algorithm A MacAlgorithm algorithm to use to hash the input value.
+ * @param  {string} value     The input value to generate a hash for.
+ * @param  {string} key       A key to use to generate the hash with.
+ * @param  {string} charset   A Charset representing the input character set.
+ * @param  {bool} byte      	A bool to return output true:byte[] or false:string.
+ *
+ * @return {byte[]/string}    A byte[]/string representing the output signature.
+ */
 function computeHmacSignature(algorithm, value, key, charset, byte) {
 	var digest;
 
