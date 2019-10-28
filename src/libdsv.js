@@ -11,30 +11,30 @@
  * @return {Array}              The tabular 2D representation.
  */
 function parseDsvTo2DArray_(source, delimiter) {
-  var data;
+	var data;
 
-  if(!delimiter  ||  delimiter == "") delimiter = ",";
+	if (!delimiter || delimiter == "") delimiter = ",";
 
 
-  switch(typeof source) {
-    case "object":
-      if(source.getBlob().getContentType() !== "text/csv") return;
-      source = source.getBlob().getDataAsString();
-      break;
-    case "string":
-      break;
-    default:
-      return;
-  }
+	switch (typeof source) {
+		case "object":
+			if (source.getBlob().getContentType() !== "text/csv") return;
+			source = source.getBlob().getDataAsString();
+			break;
+		case "string":
+			break;
+		default:
+			return;
+	}
 
-  try {
-    data = Utilities.parseCsv(source, delimiter);
-  } catch(err) {
-    console.error("parseDsvTo2DArray_()", err);
-    return;
-  }
+	try {
+		data = Utilities.parseCsv(source, delimiter);
+	} catch (err) {
+		console.error("parseDsvTo2DArray_()", err);
+		return;
+	}
 
-  return data;
+	return data;
 }
 
 /**
@@ -44,28 +44,28 @@ function parseDsvTo2DArray_(source, delimiter) {
  * @return {Array}              The DSV string.
  */
 function transform2DArrayToDsv_(data, delimiter) {
-  var output, i, j;
+	var output, i, j;
 
 
-  if(delimiter) {
-    output = data[0][0];
+	if (delimiter) {
+		output = data[0][0];
 
-    for(j = 1;  j < data[0].length;  j++) {
-      output += delimiter + data[0][j];
-    }
+		for (j = 1; j < data[0].length; j++) {
+			output += delimiter + data[0][j];
+		}
 
-    for(i = 1;  i < data.length;  i++) {
-      output += "\n";
+		for (i = 1; i < data.length; i++) {
+			output += "\n";
 
-      output += data[i][0];
-      for(j = 1;  j < data[i].length;  j++) {
-        output += delimiter + data[i][j];
-      }
-    }
+			output += data[i][0];
+			for (j = 1; j < data[i].length; j++) {
+				output += delimiter + data[i][j];
+			}
+		}
 
-  } else {
-    output = data.join("\n");
-  }
+	} else {
+		output = data.join("\n");
+	}
 
-  return output;
+	return output;
 }

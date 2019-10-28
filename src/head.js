@@ -1,18 +1,18 @@
 var AppsScriptGlobal = (function() {
-  var o = {
-    AddonVersionCode: 0,
-    AddonVersionName: "",
+	var o = {
+		AddonVersionCode: 0,
+		AddonVersionName: "",
 
-    listNameMonth: [
-      [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
-      [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
-    ]
-  };
+		listNameMonth: [
+			[ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+			[ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
+		]
+	};
 
-  return {
-    AddonVersionCode: function() { return o.AddonVersionCode },
-    AddonVersionName: function() { return o.AddonVersionName },
+	return {
+		AddonVersionCode: function() { return o.AddonVersionCode },
+		AddonVersionName: function() { return o.AddonVersionName },
 
-    listNameMonth: function() { return o.listNameMonth }
-  };
+		listNameMonth: function() { return o.listNameMonth }
+	};
 })();
