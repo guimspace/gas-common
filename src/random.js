@@ -55,3 +55,47 @@ function randomValueSign(p, d) {
 function randomValueNegative(p, d) {
 	return -randomNumber(p).toFixed(d);
 }
+
+
+function randomString(n, p) {
+	var a, b;
+	var i;
+
+	a = "";
+	switch (p) {
+		case "digit":
+			b = "0123456789";
+			break;
+		case "lower":
+			b = "abcdefghijklmnopqrstuvwxyz";
+			break;
+		case "upper":
+			b = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			break;
+		case "alpha":
+			b = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+			break;
+		case "lonum":
+			b = "abcdefghijklmnopqrstuvwxyz0123456789";
+			break;
+		case "upnum":
+			b = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			break;
+		case "alnum":
+			b = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			break;
+		case "word":
+			b = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_";
+			break;
+
+		default:
+			b = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			break;
+	}
+
+	for (i = 0; i < n; i++) {
+		a += b.charAt(Math.floor(Math.random() * b.length));
+	}
+
+	return a;
+}
