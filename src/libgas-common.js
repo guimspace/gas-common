@@ -10,27 +10,6 @@ function htmlInclude(fileName) {
 
 
 /**
- * Converts an array of bytes to string.
- * @param  {Object} b Array of bytes.
- * @return {String} String.
- */
-function byte2string(b) {
-	var r = '';
-	var v, i;
-
-	for (i = 0; i < b.length; i++) {
-		v = b[i];
-		if (v < 0) v += 256;
-		v = v.toString(16);
-		if (v.length === 1) v = '0' + v;
-		r += v;
-	}
-
-	return r;
-}
-
-
-/**
  * Sends an email requesting re-authorization of the script.
  * The property "authorization_status" ensures the recipient receives the email
  * only once (for every new re-authorization needed), otherwise the function
