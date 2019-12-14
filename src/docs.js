@@ -4,9 +4,7 @@
  * <https://github.com/guimspace/gas-common>
  */
 
-function bodyReplaceAllText_(body, list, sign) {
-	var key, c1, c2;
-
+function getSign(name, double) {
 	switch (sign) {
 		case "curly":
 			c1 = "{";
@@ -35,6 +33,19 @@ function bodyReplaceAllText_(body, list, sign) {
 			c2 = c1;
 			break;
 	}
+
+	if (double) {
+		c1 += c1;
+		c2 += c2;
+	}
+
+	return [c1, c2];
+}
+
+function bodyReplaceAllText_(body, list, sign, double) {
+	var key, c1, c2;
+
+	[c1, c2] = getSign(sign, double);
 
 	for (key in list) {
 		if ( !/\w+/.test(key) ) continue;
@@ -44,38 +55,11 @@ function bodyReplaceAllText_(body, list, sign) {
 }
 
 
-function bodyReplaceFirstText_(body, list, sign) {
+function bodyReplaceFirstText_(body, list, sign, double) {
 	var range, texto, index;
 	var key, c1, c2;
 
-	switch (sign) {
-		case "curly":
-			c1 = "{";
-			c2 = "}";
-			break;
-		case "round":
-			c1 = "(";
-			c2 = ")";
-			break;
-		case "square":
-			c1 = "[";
-			c2 = "]";
-			break;
-		case "at":
-			c1 = "@";
-			c2 = c1;
-			break;
-		case "hashtag":
-			c1 = "#";
-			c2 = c1;
-			break;
-
-		case "percent":
-		default:
-			c1 = "%";
-			c2 = c1;
-			break;
-	}
+	[c1, c2] = getSign(sign, double);
 
 	for (key in list) {
 		if ( !/\w+/.test(key) ) continue;
