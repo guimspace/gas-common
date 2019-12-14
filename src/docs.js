@@ -73,3 +73,23 @@ function bodyReplaceFirstText_(body, list, sign, double) {
 		texto.insertText(index, list[key]);
 	}
 }
+
+
+function bodyReplaceFirstHyperlink_(body, list, sign, double) {
+	var range, texto, index;
+	var key, c1, c2;
+
+	[c1, c2] = getSign(sign, double);
+
+	for (key in list) {
+		if ( !/\w+/.test(key) ) continue;
+
+		range = body.findText(c1 + key + c2);
+		if (!range) continue;
+
+		index = range.getStartOffset();
+		texto = range.getElement().asText();
+		texto.deleteText(index, range.getEndOffsetInclusive());
+		texto.insertText(index, list[key].text).setLinkUrl(index, index + list[key].url.length - 1, list[key].url);
+	}
+}
