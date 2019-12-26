@@ -22,16 +22,3 @@ function transpose(src) {
 
 	return dest;
 }
-
-
-function fillRow(array, n, v) {
-	for (var i = 0; i < array.length; i++) {
-		if (array[i].length >= n) continue;
-
-		array[i].concat(
-			Array(n - array[i].length).fill(v);
-		);
-	}
-
-	return array;
-}
