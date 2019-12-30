@@ -16,22 +16,6 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 	var m_Properties;
 	var thisTrigger;
 
-	if (key !== "") {
-		switch (method) {
-			case 'document':
-				m_Properties = PropertiesService.getDocumentProperties();
-				break;
-			case 'script':
-				m_Properties = PropertiesService.getScriptProperties();
-				break;
-
-			case 'user':
-			default:
-				m_Properties = PropertiesService.getUserProperties();
-				break;
-		}
-	}
-
 	if (type === 'onOpen') {
 		thisTrigger = ScriptApp.newTrigger(name)
 			.forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
@@ -123,7 +107,21 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.create();
 	}
 
-	if (key !== "") {
+	if (key && key !== "") {
+		switch (method) {
+			case 'document':
+				m_Properties = PropertiesService.getDocumentProperties();
+				break;
+			case 'script':
+				m_Properties = PropertiesService.getScriptProperties();
+				break;
+
+			case 'user':
+			default:
+				m_Properties = PropertiesService.getUserProperties();
+				break;
+		}
+
 		m_Properties.setProperty(key, thisTrigger.getUniqueId());
 	}
 }
