@@ -12,9 +12,12 @@
  * @param  {String} name   The function to call when the trigger fires
  */
 function createScriptAppTriggers_(method, key, type, name, param1, param2, param3) {
-	var weekday;
+	var weekday, timezone;
 	var m_Properties;
 	var trigger;
+
+	timezone = SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone();
+	if (typeof timezone != 'string' || timezone == '') timezone = 'GMT';
 
 	if (type === 'onOpen') {
 		trigger = ScriptApp.newTrigger(name)
@@ -25,19 +28,19 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.after(param1)
-			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+			.inTimezone(timezone)
 			.create();
 	} else if (type === 'atTime') {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.at(param1)
-			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+			.inTimezone(timezone)
 			.create();
 	} else if (type === 'atDate') {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.atDate(param1, param2, param3)
-			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+			.inTimezone(timezone)
 			.create();
 	} else if (type === 'onMonthDay') {
 		if (param2 == null) param2 = 0;
@@ -48,7 +51,7 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.onMonthDay(param1)
 			.atHour(param2)
 			.nearMinute(param3)
-			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+			.inTimezone(timezone)
 			.create();
 	} else if (type === 'onWeekDay') {
 		weekday = [ ScriptApp.WeekDay.SUNDAY, ScriptApp.WeekDay.MONDAY, ScriptApp.WeekDay.TUESDAY, ScriptApp.WeekDay.WEDNESDAY, ScriptApp.WeekDay.THURSDAY, ScriptApp.WeekDay.FRIDAY, ScriptApp.WeekDay.SATURDAY ];
@@ -61,19 +64,19 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.onWeekDay(weekday[param1])
 			.atHour(param2)
 			.nearMinute(param3)
-			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+			.inTimezone(timezone)
 			.create();
 	} else if (type === 'everyMinutes') {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyMinutes(param1)
-			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+			.inTimezone(timezone)
 			.create();
 	} else if (type === 'everyHours') {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyHours(param1)
-			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+			.inTimezone(timezone)
 			.create();
 	} else if (type === 'everyDays') {
 		if (param2 == null) param2 = 0;
@@ -84,13 +87,13 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.everyDays(param1)
 			.atHour(param2)
 			.nearMinute(param3)
-			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+			.inTimezone(timezone)
 			.create();
 	} else if (type === 'everyWeeks') {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyWeeks(param1)
-			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
+			.inTimezone(timezone)
 			.create();
 	} else if (type === 'onEdit') {
 		trigger = ScriptApp.newTrigger(name)
