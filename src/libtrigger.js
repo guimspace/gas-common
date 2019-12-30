@@ -12,29 +12,29 @@
  * @param  {String} name   The function to call when the trigger fires
  */
 function createScriptAppTriggers_(method, key, type, name, param1, param2, param3) {
-	var enum_weekday = [ ScriptApp.WeekDay.SUNDAY, ScriptApp.WeekDay.MONDAY, ScriptApp.WeekDay.TUESDAY, ScriptApp.WeekDay.WEDNESDAY, ScriptApp.WeekDay.THURSDAY, ScriptApp.WeekDay.FRIDAY, ScriptApp.WeekDay.SATURDAY ];
+	var weekday;
 	var m_Properties;
-	var thisTrigger;
+	var trigger;
 
 	if (type === 'onOpen') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
 			.onOpen()
 			.create();
 	} else if (type === 'afterMilliseconds') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.after(param1)
 			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
 			.create();
 	} else if (type === 'atTime') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.at(param1)
 			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
 			.create();
 	} else if (type === 'atDate') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.atDate(param1, param2, param3)
 			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
@@ -43,7 +43,7 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 		if (param2 == null) param2 = 0;
 		if (param3 == null) param3 = 0;
 
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.onMonthDay(param1)
 			.atHour(param2)
@@ -51,24 +51,26 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
 			.create();
 	} else if (type === 'onWeekDay') {
+		weekday = [ ScriptApp.WeekDay.SUNDAY, ScriptApp.WeekDay.MONDAY, ScriptApp.WeekDay.TUESDAY, ScriptApp.WeekDay.WEDNESDAY, ScriptApp.WeekDay.THURSDAY, ScriptApp.WeekDay.FRIDAY, ScriptApp.WeekDay.SATURDAY ];
+
 		if (param2 == null) param2 = 0;
 		if (param3 == null) param3 = 0;
 
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
-			.onWeekDay(enum_weekday[param1])
+			.onWeekDay(weekday[param1])
 			.atHour(param2)
 			.nearMinute(param3)
 			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
 			.create();
 	} else if (type === 'everyMinutes') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyMinutes(param1)
 			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
 			.create();
 	} else if (type === 'everyHours') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyHours(param1)
 			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
@@ -77,7 +79,7 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 		if (param2 == null) param2 = 0;
 		if (param3 == null) param3 = 0;
 
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyDays(param1)
 			.atHour(param2)
@@ -85,23 +87,23 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
 			.create();
 	} else if (type === 'everyWeeks') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyWeeks(param1)
 			.inTimezone( SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone() )
 			.create();
 	} else if (type === 'onEdit') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
 			.onEdit()
 			.create();
 	} else if (type === 'onChange') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
 			.onChange()
 			.create();
 	} else if (type === 'onFormSubmit') {
-		thisTrigger = ScriptApp.newTrigger(name)
+		trigger = ScriptApp.newTrigger(name)
 			.forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
 			.onFormSubmit()
 			.create();
@@ -122,7 +124,7 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 				break;
 		}
 
-		m_Properties.setProperty(key, thisTrigger.getUniqueId());
+		m_Properties.setProperty(key, trigger.getUniqueId());
 	}
 }
 
