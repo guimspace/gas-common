@@ -185,6 +185,6 @@ function purgeScriptAppTriggers_() {
 
 	for (i = 0; i < listTriggers.length; i++) {
 		ScriptApp.deleteTrigger(listTriggers[i]);
-		Utilities.sleep(487);
+		Utilities.sleep(1231);
 	}
 }
