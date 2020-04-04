@@ -17,32 +17,32 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 	var trigger;
 
 	timezone = SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone();
-	if (typeof timezone != 'string' || timezone == '') timezone = 'GMT';
+	if (typeof timezone != "string" || timezone == "") timezone = "GMT";
 
-	if (type === 'onOpen') {
+	if (type === "onOpen") {
 		trigger = ScriptApp.newTrigger(name)
 			.forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
 			.onOpen()
 			.create();
-	} else if (type === 'afterMilliseconds') {
+	} else if (type === "afterMilliseconds") {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.after(param1)
 			.inTimezone(timezone)
 			.create();
-	} else if (type === 'atTime') {
+	} else if (type === "atTime") {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.at(param1)
 			.inTimezone(timezone)
 			.create();
-	} else if (type === 'atDate') {
+	} else if (type === "atDate") {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.atDate(param1, param2, param3)
 			.inTimezone(timezone)
 			.create();
-	} else if (type === 'onMonthDay') {
+	} else if (type === "onMonthDay") {
 		if (param2 == null) param2 = 0;
 		if (param3 == null) param3 = 0;
 
@@ -53,7 +53,7 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.nearMinute(param3)
 			.inTimezone(timezone)
 			.create();
-	} else if (type === 'onWeekDay') {
+	} else if (type === "onWeekDay") {
 		weekday = [ ScriptApp.WeekDay.SUNDAY, ScriptApp.WeekDay.MONDAY, ScriptApp.WeekDay.TUESDAY, ScriptApp.WeekDay.WEDNESDAY, ScriptApp.WeekDay.THURSDAY, ScriptApp.WeekDay.FRIDAY, ScriptApp.WeekDay.SATURDAY ];
 
 		if (param2 == null) param2 = 0;
@@ -66,19 +66,19 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.nearMinute(param3)
 			.inTimezone(timezone)
 			.create();
-	} else if (type === 'everyMinutes') {
+	} else if (type === "everyMinutes") {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyMinutes(param1)
 			.inTimezone(timezone)
 			.create();
-	} else if (type === 'everyHours') {
+	} else if (type === "everyHours") {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyHours(param1)
 			.inTimezone(timezone)
 			.create();
-	} else if (type === 'everyDays') {
+	} else if (type === "everyDays") {
 		if (param2 == null) param2 = 0;
 		if (param3 == null) param3 = 0;
 
@@ -89,23 +89,23 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.nearMinute(param3)
 			.inTimezone(timezone)
 			.create();
-	} else if (type === 'everyWeeks') {
+	} else if (type === "everyWeeks") {
 		trigger = ScriptApp.newTrigger(name)
 			.timeBased()
 			.everyWeeks(param1)
 			.inTimezone(timezone)
 			.create();
-	} else if (type === 'onEdit') {
+	} else if (type === "onEdit") {
 		trigger = ScriptApp.newTrigger(name)
 			.forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
 			.onEdit()
 			.create();
-	} else if (type === 'onChange') {
+	} else if (type === "onChange") {
 		trigger = ScriptApp.newTrigger(name)
 			.forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
 			.onChange()
 			.create();
-	} else if (type === 'onFormSubmit') {
+	} else if (type === "onFormSubmit") {
 		trigger = ScriptApp.newTrigger(name)
 			.forSpreadsheet( SpreadsheetApp.getActiveSpreadsheet().getId() )
 			.onFormSubmit()
@@ -114,14 +114,14 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 
 	if (key && key !== "") {
 		switch (method) {
-			case 'document':
+			case "document":
 				m_Properties = PropertiesService.getDocumentProperties();
 				break;
-			case 'script':
+			case "script":
 				m_Properties = PropertiesService.getScriptProperties();
 				break;
 
-			case 'user':
+			case "user":
 			default:
 				m_Properties = PropertiesService.getUserProperties();
 				break;
@@ -144,13 +144,13 @@ function deleteScriptAppTriggers_(method, key, name) {
 
 
 	switch (method) {
-		case 'document':
+		case "document":
 			m_Properties = PropertiesService.getDocumentProperties();
 			break;
-		case 'script':
+		case "script":
 			m_Properties = PropertiesService.getScriptProperties();
 			break;
-		case 'user':
+		case "user":
 		default:
 			m_Properties = PropertiesService.getUserProperties();
 			break;

@@ -15,29 +15,29 @@ function getPropertiesService_(method, key, type) {
 	var m_Properties;
 
 	switch (method) {
-		case 'document':
+		case "document":
 			m_Properties = PropertiesService.getDocumentProperties();
 			break;
-		case 'script':
+		case "script":
 			m_Properties = PropertiesService.getScriptProperties();
 			break;
 
-		case 'user':
+		case "user":
 		default:
 			m_Properties = PropertiesService.getUserProperties();
 			break;
 	}
 
 	switch (type) {
-		case 'number':
+		case "number":
 			return Number( m_Properties.getProperty(key) );
-		case 'string':
+		case "string":
 			return m_Properties.getProperty(key);
-		case 'boolean':
-			if (m_Properties.getProperty(key) === 'true') return true;
+		case "boolean":
+			if (m_Properties.getProperty(key) === "true") return true;
 			else return false;
-		case 'obj':
-		case 'json':
+		case "obj":
+		case "json":
 			var p = m_Properties.getProperty(key);
 			return JSON.parse( p );
 
@@ -57,32 +57,32 @@ function setPropertiesService_(method, key, type, value) {
 	var m_Properties;
 
 	switch (method) {
-		case 'document':
+		case "document":
 			m_Properties = PropertiesService.getDocumentProperties();
 			break;
-		case 'script':
+		case "script":
 			m_Properties = PropertiesService.getScriptProperties();
 			break;
 
-		case 'user':
+		case "user":
 		default:
 			m_Properties = PropertiesService.getUserProperties();
 			break;
 	}
 
 	switch (type) {
-		case 'number':
+		case "number":
 			m_Properties.setProperty(key, value.toString());
 			break;
-		case 'string':
+		case "string":
 			m_Properties.setProperty(key, value);
 			break;
-		case 'boolean':
-			if (value) m_Properties.setProperty(key, 'true');
-			else m_Properties.setProperty(key, 'false');
+		case "boolean":
+			if (value) m_Properties.setProperty(key, "true");
+			else m_Properties.setProperty(key, "false");
 			break;
-		case 'obj':
-		case 'json':
+		case "obj":
+		case "json":
 			m_Properties.setProperty(key, JSON.stringify( value ));
 			break;
 
@@ -101,14 +101,14 @@ function deletePropertiesService_(method, key) {
 	var m_Properties;
 
 	switch (method) {
-		case 'document':
+		case "document":
 			m_Properties = PropertiesService.getDocumentProperties();
 			break;
-		case 'script':
+		case "script":
 			m_Properties = PropertiesService.getScriptProperties();
 			break;
 
-		case 'user':
+		case "user":
 		default:
 			m_Properties = PropertiesService.getUserProperties();
 			break;
@@ -123,13 +123,13 @@ function deletePropertiesService_(method, key) {
  */
 function purgePropertiesService_(method) {
 	switch (method) {
-		case 'document':
+		case "document":
 			PropertiesService.getDocumentProperties().deleteAllProperties();
 			break;
-		case 'script':
+		case "script":
 			PropertiesService.getScriptProperties().deleteAllProperties();
 			break;
-		case 'user':
+		case "user":
 			PropertiesService.getUserProperties().deleteAllProperties();
 			break;
 

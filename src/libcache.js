@@ -16,28 +16,28 @@ function getCacheService_(method, key, type) {
 
 
 	switch (method) {
-		case 'document':
+		case "document":
 			m_Cache = CacheService.getDocumentCache();
 			break;
-		case 'script':
+		case "script":
 			m_Cache = CacheService.getScriptCache();
 			break;
-		case 'user':
+		case "user":
 		default:
 			m_Cache = CacheService.getUserCache();
 			break;
 	}
 
 	switch (type) {
-		case 'number':
+		case "number":
 			return Number( m_Cache.get(key) );
-		case 'string':
+		case "string":
 			return m_Cache.get(key);
-		case 'boolean':
-			if (m_Cache.get(key) === 'true') return true;
+		case "boolean":
+			if (m_Cache.get(key) === "true") return true;
 			else return false;
-		case 'obj':
-		case 'json':
+		case "obj":
+		case "json":
 			var p = m_Cache.get(key);
 			return JSON.parse( p );
 		default:
@@ -58,31 +58,31 @@ function putCacheService_(method, key, type, value, expiration) {
 
 	if (expiration == null) expiration = 600;
 	switch (method) {
-		case 'document':
+		case "document":
 			m_Cache = CacheService.getDocumentCache();
 			break;
-		case 'script':
+		case "script":
 			m_Cache = CacheService.getScriptCache();
 			break;
-		case 'user':
+		case "user":
 		default:
 			m_Cache = CacheService.getUserCache();
 			break;
 	}
 
 	switch (type) {
-		case 'number':
+		case "number":
 			m_Cache.put(key, value.toString(), expiration);
 			break;
-		case 'string':
+		case "string":
 			m_Cache.put(key, value, expiration);
 			break;
-		case 'boolean':
-			if (value) m_Cache.put(key, 'true', expiration);
-			else m_Cache.put(key, 'false', expiration);
+		case "boolean":
+			if (value) m_Cache.put(key, "true", expiration);
+			else m_Cache.put(key, "false", expiration);
 			break;
-		case 'obj':
-		case 'json':
+		case "obj":
+		case "json":
 			m_Cache.put(key, JSON.stringify( value ), expiration);
 			break;
 		default:
