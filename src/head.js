@@ -1,18 +1,12 @@
-var AppsScriptGlobal = (function() {
-	var o = {
-		AddonVersionCode: 0,
-		AddonVersionName: "",
+var APPS_SCRIPT = Object.freeze({
+	version_number: {
+		major: 0,
+		minor: 1,
+		patch: 0
+	},
 
-		listNameMonth: [
+	listNameMonth: [
 			[ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
 			[ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
 		]
-	};
-
-	return {
-		AddonVersionCode: function() { return o.AddonVersionCode },
-		AddonVersionName: function() { return o.AddonVersionName },
-
-		listNameMonth: function() { return o.listNameMonth }
-	};
-})();
+});
