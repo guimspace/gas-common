@@ -12,37 +12,37 @@
  * @return {Object}        The value associated with the given key in the current Properties store
  */
 function getPropertiesService_(method, key, type) {
-	var m_Properties;
+	var properties;
 
 	switch (method) {
 		case "document":
-			m_Properties = PropertiesService.getDocumentProperties();
+			properties = PropertiesService.getDocumentProperties();
 			break;
 		case "script":
-			m_Properties = PropertiesService.getScriptProperties();
+			properties = PropertiesService.getScriptProperties();
 			break;
 
 		case "user":
 		default:
-			m_Properties = PropertiesService.getUserProperties();
+			properties = PropertiesService.getUserProperties();
 			break;
 	}
 
 	switch (type) {
 		case "number":
-			return Number( m_Properties.getProperty(key) );
+			return Number( properties.getProperty(key) );
 		case "string":
-			return m_Properties.getProperty(key);
+			return properties.getProperty(key);
 		case "boolean":
-			if (m_Properties.getProperty(key) === "true") return true;
+			if (properties.getProperty(key) == "true") return true;
 			else return false;
 		case "obj":
 		case "json":
-			var p = m_Properties.getProperty(key);
+			var p = properties.getProperty(key);
 			return JSON.parse( p );
 
 		default:
-			return m_Properties.getProperty(key);
+			return properties.getProperty(key);
 	}
 }
 
@@ -54,40 +54,40 @@ function getPropertiesService_(method, key, type) {
  * @param  {Object} value  The value to associate with the key
  */
 function setPropertiesService_(method, key, type, value) {
-	var m_Properties;
+	var properties;
 
 	switch (method) {
 		case "document":
-			m_Properties = PropertiesService.getDocumentProperties();
+			properties = PropertiesService.getDocumentProperties();
 			break;
 		case "script":
-			m_Properties = PropertiesService.getScriptProperties();
+			properties = PropertiesService.getScriptProperties();
 			break;
 
 		case "user":
 		default:
-			m_Properties = PropertiesService.getUserProperties();
+			properties = PropertiesService.getUserProperties();
 			break;
 	}
 
 	switch (type) {
 		case "number":
-			m_Properties.setProperty(key, value.toString());
+			properties.setProperty(key, value.toString());
 			break;
 		case "string":
-			m_Properties.setProperty(key, value);
+			properties.setProperty(key, value);
 			break;
 		case "boolean":
-			if (value) m_Properties.setProperty(key, "true");
-			else m_Properties.setProperty(key, "false");
+			if (value) properties.setProperty(key, "true");
+			else properties.setProperty(key, "false");
 			break;
 		case "obj":
 		case "json":
-			m_Properties.setProperty(key, JSON.stringify( value ));
+			properties.setProperty(key, JSON.stringify( value ));
 			break;
 
 		default:
-			m_Properties.setProperty(key, value);
+			properties.setProperty(key, value);
 			break;
 	}
 }
@@ -98,23 +98,23 @@ function setPropertiesService_(method, key, type, value) {
  * @param  {String} key    The key for the property
  */
 function deletePropertiesService_(method, key) {
-	var m_Properties;
+	var properties;
 
 	switch (method) {
 		case "document":
-			m_Properties = PropertiesService.getDocumentProperties();
+			properties = PropertiesService.getDocumentProperties();
 			break;
 		case "script":
-			m_Properties = PropertiesService.getScriptProperties();
+			properties = PropertiesService.getScriptProperties();
 			break;
 
 		case "user":
 		default:
-			m_Properties = PropertiesService.getUserProperties();
+			properties = PropertiesService.getUserProperties();
 			break;
 	}
 
-	m_Properties.deleteProperty(key);
+	properties.deleteProperty(key);
 }
 
 /**

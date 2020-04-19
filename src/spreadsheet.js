@@ -5,42 +5,42 @@
  */
 
 function copySheetsFromTemplate_() {
-	var spreadsheetTemplate = SpreadsheetApp.openById("spreadsheet_id"),
-			spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-	var listSheetsTemplate = [ "foo", "bar" ];
+	var source = SpreadsheetApp.openById("SPREADSHEET_ID");
+	var destination = SpreadsheetApp.getActiveSpreadsheet();
+	const sheets = [ "foo", "bar" ];
 
-	for (var i = 0; i < listSheetsTemplate.length; i++) {
-		if (spreadsheet.getSheetByName(listSheetsTemplate[i])) continue;
+	for (var i = 0; i < sheets.length; i++) {
+		if (destination.getSheetByName(sheets[i])) continue;
 
-		spreadsheetTemplate.getSheetByName(listSheetsTemplate[i])
-			.copyTo(spreadsheet)
-			.setName(listSheetsTemplate[i]);
+		source.getSheetByName(sheets[i])
+			.copyTo(destination)
+			.setName(sheets[i]);
 	}
 }
 
 
 function deleteAllSheets_() {
-	var spreadsheet = SpreadsheetApp.getActiveSpreadsheet(),
-			listSheets = spreadsheet.getSheets();
+	var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+	var sheets = spreadsheet.getSheets();
 
-	listSheets[0].showSheet();
-	spreadsheet.setActiveSheet(listSheets[0]);
+	sheets[0].showSheet();
+	spreadsheet.setActiveSheet(sheets[0]);
 
-	for (var i = 1; i < listSheets.length; i++) {
-		spreadsheet.deleteSheet(listSheets[i]);
+	for (var i = 1; i < sheets.length; i++) {
+		spreadsheet.deleteSheet(sheets[i]);
 	}
 
 	spreadsheet.insertSheet();
-	spreadsheet.deleteSheet(listSheets[0]);
+	spreadsheet.deleteSheet(sheets[0]);
 }
 
 
 function isMissingSheet() {
 	var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-	var list = [ "foo", "bar" ];
+	const sheets = [ "foo", "bar" ];
 
-	for (var i = 0; i < list.length; i++) {
-		if (spreadsheet.getSheetByName(list[i]) == null) return true;
+	for (var i = 0; i < sheets.length; i++) {
+		if (! spreadsheet.getSheetByName(sheets[i])) return true;
 	}
 
 	return false;

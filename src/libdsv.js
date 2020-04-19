@@ -15,7 +15,6 @@ function parseDsvTo2DArray_(source, delimiter) {
 
 	if (!delimiter || delimiter == "") delimiter = ",";
 
-
 	switch (typeof source) {
 		case "object":
 			if (source.getBlob().getContentType() !== "text/csv") return;
@@ -23,6 +22,7 @@ function parseDsvTo2DArray_(source, delimiter) {
 			break;
 		case "string":
 			break;
+
 		default:
 			return;
 	}
@@ -45,7 +45,6 @@ function parseDsvTo2DArray_(source, delimiter) {
  */
 function transform2DArrayToDsv_(data, delimiter) {
 	var output, i, j;
-
 
 	if (delimiter) {
 		output = data[0][0];

@@ -13,8 +13,7 @@
  */
 function createScriptAppTriggers_(method, key, type, name, param1, param2, param3) {
 	var weekday, timezone;
-	var m_Properties;
-	var trigger;
+	var properties, trigger;
 
 	timezone = SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone();
 	if (typeof timezone != "string" || timezone == "") timezone = "GMT";
@@ -115,19 +114,19 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 	if (key && key !== "") {
 		switch (method) {
 			case "document":
-				m_Properties = PropertiesService.getDocumentProperties();
+				properties = PropertiesService.getDocumentProperties();
 				break;
 			case "script":
-				m_Properties = PropertiesService.getScriptProperties();
+				properties = PropertiesService.getScriptProperties();
 				break;
 
 			case "user":
 			default:
-				m_Properties = PropertiesService.getUserProperties();
+				properties = PropertiesService.getUserProperties();
 				break;
 		}
 
-		m_Properties.setProperty(key, trigger.getUniqueId());
+		properties.setProperty(key, trigger.getUniqueId());
 	}
 }
 
@@ -138,41 +137,40 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
  * @param  {String} name   The name of the function
  */
 function deleteScriptAppTriggers_(method, key, name) {
-	var m_Properties;
-	var listTriggers, thisTrigger, thisTriggerID;
+	var properties;
+	var triggers, trigger_id;
 	var i;
-
 
 	switch (method) {
 		case "document":
-			m_Properties = PropertiesService.getDocumentProperties();
+			properties = PropertiesService.getDocumentProperties();
 			break;
 		case "script":
-			m_Properties = PropertiesService.getScriptProperties();
+			properties = PropertiesService.getScriptProperties();
 			break;
 		case "user":
 		default:
-			m_Properties = PropertiesService.getUserProperties();
+			properties = PropertiesService.getUserProperties();
 			break;
 	}
 
-	listTriggers = ScriptApp.getUserTriggers( SpreadsheetApp.getActiveSpreadsheet() );
+	triggers = ScriptApp.getUserTriggers( SpreadsheetApp.getActiveSpreadsheet() );
 
-	if (key && key != "") {
-		thisTriggerID = m_Properties.getProperty(key);
-		if (!thisTriggerID) return;
+	if (key && key !== "") {
+		trigger_id = properties.getProperty(key);
+		if (!trigger_id) return;
 
-		for (i = 0; i < listTriggers.length; i++) {
-			if (listTriggers[i].getUniqueId() === thisTriggerID) {
-				ScriptApp.deleteTrigger(listTriggers[i]);
-				m_Properties.deleteProperty(key);
+		for (i = 0; i < triggers.length; i++) {
+			if (triggers[i].getUniqueId() === trigger_id) {
+				ScriptApp.deleteTrigger(triggers[i]);
+				properties.deleteProperty(key);
 				break;
 			}
 		}
 	} else {
-		for (i = 0; i < listTriggers.length; i++) {
-			if (listTriggers[i].getHandlerFunction() === name) {
-				ScriptApp.deleteTrigger(listTriggers[i]);
+		for (i = 0; i < triggers.length; i++) {
+			if (triggers[i].getHandlerFunction() === name) {
+				ScriptApp.deleteTrigger(triggers[i]);
 				break;
 			}
 		}
@@ -183,11 +181,10 @@ function deleteScriptAppTriggers_(method, key, name) {
  * Purges all triggers.
  */
 function purgeScriptAppTriggers_() {
-	var listTriggers = ScriptApp.getUserTriggers( SpreadsheetApp.getActiveSpreadsheet() );
-	var i;
+	var triggers = ScriptApp.getUserTriggers( SpreadsheetApp.getActiveSpreadsheet() );
 
-	for (i = 0; i < listTriggers.length; i++) {
-		ScriptApp.deleteTrigger(listTriggers[i]);
+	for (var i = 0; i < triggers.length; i++) {
+		ScriptApp.deleteTrigger(triggers[i]);
 		Utilities.sleep(1231);
 	}
 }

@@ -48,7 +48,7 @@ function bodyReplaceAllText_(body, list, sign, double) {
 	[c1, c2] = getSign(sign, double);
 
 	for (key in list) {
-		if ( !/\w+/.test(key) ) continue;
+		if (! /\w+/.test(key)) continue;
 
 		body.replaceText(c1 + key + c2, list[key]);
 	}
@@ -62,7 +62,7 @@ function bodyReplaceFirstText_(body, list, sign, double) {
 	[c1, c2] = getSign(sign, double);
 
 	for (key in list) {
-		if ( !/\w+/.test(key) ) continue;
+		if (! /\w+/.test(key)) continue;
 
 		range = body.findText(c1 + key + c2);
 		if (!range) continue;
@@ -82,7 +82,7 @@ function bodyReplaceFirstHyperlink_(body, list, sign, double) {
 	[c1, c2] = getSign(sign, double);
 
 	for (key in list) {
-		if ( !/\w+/.test(key) ) continue;
+		if (! /\w+/.test(key)) continue;
 
 		range = body.findText(c1 + key + c2);
 		if (!range) continue;

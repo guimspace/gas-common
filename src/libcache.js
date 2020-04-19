@@ -12,36 +12,37 @@
  * @return {Object}        The value associated with the given key in the cache instance
  */
 function getCacheService_(method, key, type) {
-	var m_Cache;
-
+	var cache;
 
 	switch (method) {
 		case "document":
-			m_Cache = CacheService.getDocumentCache();
+			cache = CacheService.getDocumentCache();
 			break;
 		case "script":
-			m_Cache = CacheService.getScriptCache();
+			cache = CacheService.getScriptCache();
 			break;
+
 		case "user":
 		default:
-			m_Cache = CacheService.getUserCache();
+			cache = CacheService.getUserCache();
 			break;
 	}
 
 	switch (type) {
 		case "number":
-			return Number( m_Cache.get(key) );
+			return Number( cache.get(key) );
 		case "string":
-			return m_Cache.get(key);
+			return cache.get(key);
 		case "boolean":
-			if (m_Cache.get(key) === "true") return true;
+			if (cache.get(key) === "true") return true;
 			else return false;
 		case "obj":
 		case "json":
-			var p = m_Cache.get(key);
+			var p = cache.get(key);
 			return JSON.parse( p );
+
 		default:
-			return m_Cache.get(key);
+			return cache.get(key);
 	}
 }
 
@@ -53,40 +54,41 @@ function getCacheService_(method, key, type) {
  * @param  {Object} value  The value to be cached
  */
 function putCacheService_(method, key, type, value, expiration) {
-	var m_Cache;
-
+	var cache;
 
 	if (expiration == null) expiration = 600;
 	switch (method) {
 		case "document":
-			m_Cache = CacheService.getDocumentCache();
+			cache = CacheService.getDocumentCache();
 			break;
 		case "script":
-			m_Cache = CacheService.getScriptCache();
+			cache = CacheService.getScriptCache();
 			break;
+
 		case "user":
 		default:
-			m_Cache = CacheService.getUserCache();
+			cache = CacheService.getUserCache();
 			break;
 	}
 
 	switch (type) {
 		case "number":
-			m_Cache.put(key, value.toString(), expiration);
+			cache.put(key, value.toString(), expiration);
 			break;
 		case "string":
-			m_Cache.put(key, value, expiration);
+			cache.put(key, value, expiration);
 			break;
 		case "boolean":
-			if (value) m_Cache.put(key, "true", expiration);
-			else m_Cache.put(key, "false", expiration);
+			if (value) cache.put(key, "true", expiration);
+			else cache.put(key, "false", expiration);
 			break;
 		case "obj":
 		case "json":
-			m_Cache.put(key, JSON.stringify( value ), expiration);
+			cache.put(key, JSON.stringify( value ), expiration);
 			break;
+
 		default:
-			m_Cache.put(key, value, expiration);
+			cache.put(key, value, expiration);
 			break;
 	}
 }
