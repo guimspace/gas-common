@@ -13,7 +13,7 @@
 function parseDsvTo2DArray_(source, delimiter) {
 	var data;
 
-	if (!delimiter || delimiter == "") delimiter = ",";
+	if (!delimiter) delimiter = ",";
 
 	switch (typeof source) {
 		case "object":
