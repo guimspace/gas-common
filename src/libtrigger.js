@@ -12,8 +12,10 @@
  * @param  {String} name   The function to call when the trigger fires
  */
 function createScriptAppTriggers_(method, key, type, name, param1, param2, param3) {
-	var weekday, timezone;
 	var properties, trigger;
+	var timezone;
+
+	const weekday = [ ScriptApp.WeekDay.SUNDAY, ScriptApp.WeekDay.MONDAY, ScriptApp.WeekDay.TUESDAY, ScriptApp.WeekDay.WEDNESDAY, ScriptApp.WeekDay.THURSDAY, ScriptApp.WeekDay.FRIDAY, ScriptApp.WeekDay.SATURDAY ];
 
 	timezone = SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone();
 	if (typeof timezone != "string" || timezone == "") timezone = "GMT";
@@ -53,8 +55,6 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.inTimezone(timezone)
 			.create();
 	} else if (type === "onWeekDay") {
-		weekday = [ ScriptApp.WeekDay.SUNDAY, ScriptApp.WeekDay.MONDAY, ScriptApp.WeekDay.TUESDAY, ScriptApp.WeekDay.WEDNESDAY, ScriptApp.WeekDay.THURSDAY, ScriptApp.WeekDay.FRIDAY, ScriptApp.WeekDay.SATURDAY ];
-
 		if (param2 == null) param2 = 0;
 		if (param3 == null) param3 = 0;
 
