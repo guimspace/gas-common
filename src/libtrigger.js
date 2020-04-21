@@ -111,7 +111,7 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 			.create();
 	}
 
-	if (!key) {
+	if (key) {
 		switch (method) {
 			case "document":
 				properties = PropertiesService.getDocumentProperties();
@@ -156,7 +156,7 @@ function deleteScriptAppTriggers_(method, key, name) {
 
 	triggers = ScriptApp.getUserTriggers( SpreadsheetApp.getActiveSpreadsheet() );
 
-	if (!key) {
+	if (key) {
 		trigger_id = properties.getProperty(key);
 		if (!trigger_id) return;
 
