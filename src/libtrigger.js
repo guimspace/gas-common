@@ -97,6 +97,9 @@ function createScriptAppTriggers_(method, key, type, name, param1, param2, param
 		trigger.timeBased()
 			.everyWeeks(param1)
 			.inTimezone(timezone);
+
+	} else {
+		throw new Error("createNewTrigger_(): Invalid trigger type.");
 	}
 
 	trigger.create();
