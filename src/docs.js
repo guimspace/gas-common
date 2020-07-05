@@ -5,6 +5,8 @@
  */
 
 function getSign(name, double) {
+  var c1, c2;
+
 	switch (sign) {
 		case "curly":
 			c1 = "{";
