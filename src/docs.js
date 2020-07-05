@@ -4,6 +4,12 @@
  * <https://github.com/guimspace/gas-common>
  */
 
+/**
+ * Get wrapper for body replacer.
+ * @param  {String} name   Name of wrapper sign.
+ * @param  {Boolan} double Double wrapper.
+ * @return {Array}         Wrappers.
+ */
 function getSign(name, double) {
   var c1, c2;
 
@@ -44,6 +50,13 @@ function getSign(name, double) {
 	return [c1, c2];
 }
 
+/**
+ * Replace all replacers with value.
+ * @param  {Body}    body   Body of document.
+ * @param  {Object}  list   Key-value pairs of replacers.
+ * @param  {String}  sign   Name of wrapper.
+ * @param  {Boolean} double Bool to double wrapper.
+ */
 function bodyReplaceAllText_(body, list, sign, double) {
 	var key, c1, c2;
 
@@ -56,7 +69,13 @@ function bodyReplaceAllText_(body, list, sign, double) {
 	}
 }
 
-
+/**
+ * Replace first replacer with value.
+ * @param  {Body}    body   Body of document.
+ * @param  {Object}  list   Key-value pairs of replacers.
+ * @param  {String}  sign   Name of wrapper.
+ * @param  {Boolean} double Bool to double wrapper.
+ */
 function bodyReplaceFirstText_(body, list, sign, double) {
 	var range, texto, index;
 	var key, c1, c2;
@@ -76,7 +95,13 @@ function bodyReplaceFirstText_(body, list, sign, double) {
 	}
 }
 
-
+/**
+ * Insert hyperlink to first replacer found.
+ * @param  {Body}    body   Body of document.
+ * @param  {Object}  list   Key-value pairs of replacers.
+ * @param  {String}  sign   Name of wrapper.
+ * @param  {Boolean} double Bool to double wrapper.
+ */
 function bodyReplaceFirstHyperlink_(body, list, sign, double) {
 	var range, texto, index;
 	var key, c1, c2;
